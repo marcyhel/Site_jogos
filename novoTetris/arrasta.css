@@ -1,0 +1,16 @@
+canvas{
+	/*background:#0D0D0D;*/
+	background:#0D0D0D;
+	margin: auto;
+	position: absolute;
+	top:0px;
+	bottom: 0px;
+	left: 0px;
+	right: 0px;
+}
+#pontos{
+	color: red;
+	font: normal 20px Arial;
+	margin: 0 auto;
+    width: 15%;
+}

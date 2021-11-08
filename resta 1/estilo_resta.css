@@ -1,0 +1,177 @@
+body{
+	color:red;
+	background-color: #0D0D0D;
+}
+table{
+	/*margin-top: 0px;*/
+	margin-left: 50%;
+}
+td{
+
+	border: 0px solid #fff;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	border-radius: 60px;
+	background-color: #0D0D0D;
+
+}
+#bola:hover{
+	box-shadow:0px 0px 15px rgba(130,184,217,0.9);
+	
+}
+#bola{
+	border: 0px solid #fff;
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	border-radius: 60px;
+	margin: 4px;
+	transition: 0.2s;
+
+}
+#reset{
+	padding: 20px;
+	border: 0px;
+	border-radius: 15px;
+	transition: 0.2s;
+}
+#reset:hover{
+	box-shadow:0px 0px 15px rgba(130,184,217,0.9);
+}
+#voltar{
+	/*margin-left: 85%;*/
+	padding: 20px;
+	border: 0px;
+	border-radius: 15px;
+	transition: 0.2s;
+
+}
+#voltar:hover{
+	box-shadow:0px 0px 15px rgba(130,184,217,0.9);
+}
+#principal{
+	min-height: 0px;
+	/*background-color: blue;*/
+	margin-left:25%;
+	max-width: 50%;
+	position: relative;
+}
+#botoes{
+	max-width: 49%;
+	/*background-color: red;*/
+	position: relative;
+}
+#tudo{
+	position: absolute;
+	width: 100%;
+	max-height: 100%;
+	margin-top:0px;
+	background-color: red;
+}
+#modo{
+	padding: 20px;
+	border: 0px;
+	border-radius: 15px;
+	transition: 0.2s;
+	margin: 0px;
+
+	
+}
+#modos{
+	position: relative;
+
+	max-width: 50%;
+	margin-left:70%;
+	top:-500px;
+	/*background-color: green;*/
+}
+@media screen and (min-width: 1075px){
+	#botoes{
+		min-height: 5px;
+	}
+	#voltar{
+		padding: 15px;
+	}
+	#reset{
+		padding: 15px;
+	}
+	#bola{
+		margin: 3px;
+		width: 75px;
+		height: 75px;
+
+	}
+	table{
+		margin-left: -50px;
+		margin-bottom: -40px;
+	}
+	td{
+		margin: 4px;
+		width: 75px;
+		height: 75px;
+	}
+}
+@media screen and (max-width: 1076px){
+	#modos{
+		top:50px;
+		max-width: 100%;
+		margin-left:25%;
+	}
+}
+
+@media screen and (max-width: 1076px){
+	#principal{
+		margin-left: 0px;
+	}
+	#botoes{
+		min-height: 5px;
+	}
+	#voltar{
+		padding: 15px;
+	}
+	#reset{
+		padding: 15px;
+	}
+	#bola{
+		margin: 2px;
+		width: 70px;
+		height: 70px;
+
+	}
+	table{
+		margin-left: -50px;
+		margin-bottom: -50px;
+	}
+	td{
+		margin: 2px;
+		width: 70px;
+		height: 70px;
+	}
+}
+
+@media screen and (max-width: 576px){
+	#botoes{
+		min-height: 5px;
+	}
+	#voltar{
+		padding: 15px;
+	}
+	#reset{
+		padding: 15px;
+	}
+	#bola{
+		margin: 2px;
+		width: 55px;
+		height: 55px;
+
+	}
+	table{
+		margin-left: -50px;
+	}
+	td{
+		margin: 2px;
+		width: 55px;
+		height: 55px;
+	}
+}

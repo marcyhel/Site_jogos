@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<title>4 em linhas</title>
+	<link rel="stylesheet" type="text/css" href="css.css">
+</head>
+<body>
+	<div><button id=voltar onclick="mudar()"> voltar </button></div>
+	<div id= "vez"> 
+		<h id='ve'>vez do jogador: X</h>
+
+		<button id=reset onclick="reset()"> Resetar </button>
+		
+		<div id= venc></div>
+		
+	</div>
+	<div id="table"></div>
+
+
+	<script type="text/javascript">
+		function mudar(){
+			window.location.replace("../index.html");
+		}
+	</script>
+	<script type="text/javascript">
+		var corX = '#C10525'
+		var corO = '#034AA6'
+		var corV = '#F2B705'
+		var chave=2
+		var parar=0
+		var mat=[
+		['','','','','','',''],
+		['','','','','','',''],
+		['','','','','','',''],
+		['','','','','','',''],
+		['','','','','','',''],
+		['','','','','','',''],
+		];
+		
+		let html= "<table cellspadding=0 cellspacing=0"
+
+		for (let x = 0; x < 6; x++){
+		html += '<tr>'
+			for(let y = 0; y< 7; y++){
+				
+				
+				html += `<td onclick="colu${y}()">`
+				html += `<div class="pixel-index" id="${x},${y}">${mat[x][y]}</div>`
+				
+				html += '</td>'
+				
+			}
+		html += '</tr>'
+	}
+	document.querySelector('#table').innerHTML = html
+
+	function reset(){
+		for(let j=0;j<6;j++){
+			for(let i=0;i<7;i++){
+				mat[j][i]=""
+				document.getElementById(`${j},${i}`).innerText=""
+			}
+		}
+		document.getElementById(`venc`).innerText=""
+		parar=0
+
+	}
+	function vencedor(venc){
+		console.log(venc)
+		if(venc==2){
+			document.getElementById("venc").innerText="vencedor é :O"
+		}
+		else{
+			document.getElementById("venc").innerText="vencedor é :X"
+		}
+		
+
+	}
+	function verifica(){
+		for(let j=0;j<6;j++){
+			for(let i=0;i<4;i++){
+				if(mat[j][i]==chave && mat[j][i+1]==chave && mat[j][i+2]==chave && mat[j][i+3]==chave){
+					console.log(chave)
+					vencedor(chave)
+					parar=1
+					if(chave==1){
+						document.getElementById(`${j},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j},${i+1}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j},${i+2}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j},${i+3}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+					}
+					else{
+						document.getElementById(`${j},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j},${i+1}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j},${i+2}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j},${i+3}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+					}
+					
+				}
+			}
+		}
+		for(let j=0;j<3;j++){
+			for(let i=0;i<7;i++){
+				if(mat[j][i]==chave && mat[j+1][i]==chave && mat[j+2][i]==chave && mat[j+3][i]==chave){
+					console.log(chave)
+					vencedor(chave)
+					parar=1
+					if(chave==1){
+						document.getElementById(`${j},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+1},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+2},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+3},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+					}
+					else{
+						document.getElementById(`${j},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+1},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+2},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+3},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+					}
+				}
+			}
+		}
+		for(let j=0;j<3;j++){
+			for(let i=0;i<4;i++){
+				if(mat[j][i]==chave && mat[j+1][i+1]==chave && mat[j+2][i+2]==chave && mat[j+3][i+3]==chave){
+					console.log(chave)
+					vencedor(chave)
+					parar=1
+					if(chave==1){
+document.getElementById(`${j},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+1},${i+1}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+2},${i+2}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+3},${i+3}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+					}
+					else{
+						document.getElementById(`${j},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+1},${i+1}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+2},${i+2}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+3},${i+3}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+					}
+				}
+			}
+		}
+
+		for(let j=0;j<3;j++){
+			for(let i=3;i<7;i++){
+				if(mat[j][i]==chave && mat[j+1][i-1]==chave && mat[j+2][i-2]==chave && mat[j+3][i-3]==chave){
+					console.log(chave)
+					vencedor(chave)
+					parar=1
+					if(chave==1){
+						document.getElementById(`${j},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+1},${i-1}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+2},${i-2}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+						document.getElementById(`${j+3},${i-3}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>X</spam>`
+					}
+					else{
+						document.getElementById(`${j},${i}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+1},${i-1}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+2},${i-2}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+						document.getElementById(`${j+3},${i-3}`).innerHTML=`<spam style='color:${corV};text-shadow:0px 0px 30px ${corV};'>O</spam>`
+					}
+				}
+			}
+		}
+		if(chave==2){
+			document.getElementById('ve').innerText="vez do jogador: X"
+		}
+		else{
+			document.getElementById('ve').innerText="vez do jogador: O"
+		}
+		
+
+	}
+	function colu0(){
+		if(parar==0){
+			for(let j=0;j<6;j++){
+
+			if(chave == 2){
+				if(j==0 && mat[j][0] != "" ){
+				break
+				}
+				if(mat[j][0]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][0]=1
+					celula=document.getElementById(`${aux},0`).innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					//document.celula.style.color = "blue";
+					chave=1
+					break
+				}
+				if(j==5){
+					mat[5][0]=1
+					document.getElementById('5,0').innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					chave=1
+				}
+			}
+			else{
+				if(j==0 && mat[j][0] != "" ){
+				break
+				}
+				if(mat[j][0]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][0]=2
+					celula=document.getElementById(`${aux},0`).innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					//document.celula.style.color = "blue";
+					chave=2
+					break
+				}
+				if(j==5){
+					mat[5][0]=2
+					document.getElementById('5,0').innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					chave=2
+				}
+
+			}
+			
+		}
+		verifica()
+		}
+		
+	}
+	function colu1(){
+		if(parar==0){
+
+		for(let j=0;j<6;j++){
+			if(chave == 2){
+				if(j==0 && mat[j][1] != "" ){
+				break
+				}
+				if(mat[j][1]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][1]=1
+					celula=document.getElementById(`${aux},1`).innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+
+					//document.celula.style.color = "blue";
+					chave=1
+					break
+				}
+				if(j==5){
+					mat[5][1]=1
+					document.getElementById('5,1').innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					chave=1
+				}
+			}
+			else{
+				if(j==0 && mat[j][1] != "" ){
+				break
+				}
+				if(mat[j][1]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][1]=2
+					celula=document.getElementById(`${aux},1`).innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					//document.celula.style.color = "blue";
+					chave=2
+					break
+				}
+				if(j==5){
+					mat[5][1]=2
+					document.getElementById('5,1').innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					chave=2
+				}
+
+			}
+			
+		}
+		verifica()
+
+		}
+	}
+	function colu2(){
+		if(parar==0){
+			for(let j=0;j<6;j++){
+			if(chave == 2){
+				if(j==0 && mat[j][2] != "" ){
+				break
+				}
+				if(mat[j][2]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][2]=1
+					celula=document.getElementById(`${aux},2`).innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					//document.celula.style.color = "blue";
+					chave=1
+					break
+				}
+				if(j==5){
+					mat[5][2]=1
+					document.getElementById('5,2').innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					chave=1
+				}
+			}
+			else{
+				if(j==0 && mat[j][2] != "" ){
+				break
+				}
+				if(mat[j][2]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][2]=2
+					celula=document.getElementById(`${aux},2`).innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					//document.celula.style.color = "blue";
+					chave=2
+					break
+				}
+				if(j==5){
+					mat[5][2]=2
+					document.getElementById('5,2').innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					chave=2
+				}
+
+			}
+			
+		}
+		verifica()
+
+		}
+		
+	}
+	function colu3(){
+		if(parar==0){
+			for(let j=0;j<6;j++){
+			if(chave == 2){
+				if(j==0 && mat[j][3] != "" ){
+				break
+				}
+				if(mat[j][3]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][3]=1
+					celula=document.getElementById(`${aux},3`).innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					//document.celula.style.color = "blue";
+					chave=1
+					break
+				}
+				if(j==5){
+					mat[5][3]=1
+					document.getElementById('5,3').innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					chave=1
+				}
+			}
+			else{
+				if(j==0 && mat[j][3] != "" ){
+				break
+				}
+				if(mat[j][3]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][3]=2
+					celula=document.getElementById(`${aux},3`).innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					//document.celula.style.color = "blue";
+					chave=2
+					break
+				}
+				if(j==5){
+					mat[5][3]=2
+					document.getElementById('5,3').innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					chave=2
+				}
+
+			}
+			
+		}
+		verifica()
+		}
+		
+	}
+	function colu4(){
+		if(parar==0){
+			for(let j=0;j<6;j++){
+			if(chave == 2){
+				if(j==0 && mat[j][4] != "" ){
+				break
+				}
+				if(mat[j][4]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][4]=1
+					celula=document.getElementById(`${aux},4`).innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					//document.celula.style.color = "blue";
+					chave=1
+					break
+				}
+				if(j==5){
+					mat[5][4]=1
+					document.getElementById('5,4').innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					chave=1
+				}
+			}
+			else{
+				if(j==0 && mat[j][4] != "" ){
+				break
+				}
+				if(mat[j][4]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][4]=2
+					celula=document.getElementById(`${aux},4`).innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					//document.celula.style.color = "blue";
+					chave=2
+					break
+				}
+				if(j==5){
+					mat[5][4]=2
+					document.getElementById('5,4').innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					chave=2
+				}
+
+			}
+			
+		}
+		verifica()
+
+		}
+		
+	}
+	function colu5(){
+		if(parar==0){
+
+		for(let j=0;j<6;j++){
+			if(chave == 2){
+				if(j==0 && mat[j][5] != "" ){
+				break
+				}
+				if(mat[j][5]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][5]=1
+					celula=document.getElementById(`${aux},5`).innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					//document.celula.style.color = "blue";
+					chave=1
+					break
+				}
+				if(j==5){
+					mat[5][5]=1
+					document.getElementById('5,5').innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					chave=1
+				}
+			}
+			else{
+				if(j==0 && mat[j][5] != "" ){
+				break
+				}
+				if(mat[j][5]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][5]=2
+					celula=document.getElementById(`${aux},5`).innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					//document.celula.style.color = "blue";
+					chave=2
+					break
+				}
+				if(j==5){
+					mat[5][5]=2
+					document.getElementById('5,5').innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					chave=2
+				}
+
+			}
+			
+		}
+		verifica()
+		}
+	}
+	function colu6(){
+		if(parar==0){
+			for(let j=0;j<6;j++){
+			if(chave == 2){
+				if(j==0 && mat[j][6] != "" ){
+				break
+				}
+				if(mat[j][6]!= "" ){
+					//console.log("ok")
+					let aux= j-1;
+					mat[aux][6]=1
+					celula=document.getElementById(`${aux},6`).innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					//document.celula.style.color = "blue";
+					chave=1
+					break
+				}
+				if(j==5){
+					mat[5][6]=1
+					document.getElementById('5,6').innerHTML=`<spam style='color:${corX}; text-shadow:0px 0px 30px ${corX};'>X</spam>`
+					chave=1
+				}
+			}
+			else{
+				if(j==0 && mat[j][6] != "" ){
+				break
+				}
+				if(mat[j][6]!= "" ){
+					//sole.log("ok")
+					let aux= j-1;
+					mat[aux][6]=2
+					celula=document.getElementById(`${aux},6`).innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					//document.celula.style.color = "blue";
+					chave=2
+					break
+				}
+				if(j==5){
+					mat[5][6]=2
+					document.getElementById('5,6').innerHTML=`<spam style='color:${corO}; text-shadow:0px 0px 30px ${corO};'>O</spam>`
+					chave=2
+				}
+
+			}
+			
+		}
+		verifica()
+		}
+		
+	}
+	</script>
+
+</body>
+</html>
