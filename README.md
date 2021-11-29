@@ -1,4 +1,4 @@
 
 <h1>Link do site</h1>
-https://marcyhel.github.io/site_jogos/
+https://marcyhel.github.io/Site_jogos/
 
